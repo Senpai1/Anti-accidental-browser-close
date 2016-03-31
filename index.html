@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Lock accidental closing of browser (Do not close this tab!)</title>
+		<link rel="shortcut icon" href="lock.ico"> <!--Icon on your tab-->
+		<script>
+			window.onbeforeunload = function() { //this part prevents the browser from accidental closing
+			return "Warning! You probably want to close the browser. Are you sure you want to do that?";
+			}
+		</script>
+	</head>
+	<body onLoad="showMedia();"> <!--Load the dyanamic background's-->
+		<script>
+			var mediaArray = new Array ( //This part array defines images found in the img folder
+			"img/imagename.yourextension",
+			"img/imagename2.yourextension"); // you can add as many you want.
+			var max = mediaArray.length; //Checks how long the name of the image is.
+			var randomIndex=0; //Index for the defining image.
+			function showMedia()
+			{
+				randomIndex = Math.floor((Math.random() * max)); //This part chooses a random index for your images
+				document.body.style.background = "url(' " + mediaArray[randomIndex] + " ') repeat center center fixed"; //This code changes the document background via JS to your desired image
+				document.body.style.backgroundSize = "cover"; //This makes sure that the image is always fully screened and responsive to the browsers window.
+				setTimeout("showMedia()",60000); //Change image after 60 seconds
+			}
+		</script>
+	</body>
+</html>
